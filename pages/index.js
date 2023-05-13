@@ -9,6 +9,22 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+    <style jsx>
+  {`
+  .dummy{
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    text-align:center;
+    font-weight:600;
+    text-decoration:underline;
+    margin-bottom: 1.25rem;
+    // background:red;
+    // color:white
+  }
+  `}
+    </style>
+
+
       <header className="text-gray-600 body-font" >
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
@@ -40,7 +56,7 @@ export default function Home() {
         </p>
 
         <div className="blogs">
-          <h2 className="text-center text-3xl font-semibold mb-5 underline">
+          <h2 className="dummy">
             Popular Blogs
           </h2>
 
