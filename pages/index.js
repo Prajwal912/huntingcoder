@@ -13,9 +13,9 @@ export default function Home() {
    
     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       <a class="mr-5 text-black hover:text-gray-900 font-bold">Home</a>
-      <a class="mr-5 hover:text-gray-900 font-bold">About</a>
-      <a class="mr-5 hover:text-gray-900 font-bold">Blog</a>
-      <a class="mr-5 hover:text-gray-900 font-bold">Contact</a>
+      <a class="mr-5 hover:text-gray-900 font-bold" href={"/about"}>About</a>
+      <a class="mr-5 hover:text-gray-900 font-bold" href={"/blog"}>Blog</a>
+      <a class="mr-5 hover:text-gray-900 font-bold" href={"/contact"}>Contact</a>
     </nav>
   
   </div>
