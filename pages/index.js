@@ -1,61 +1,67 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import Head from 'next/head'
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import Head from "next/head";
+import Link from "next/link";
+import Style from "../styles/home.module.css"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
+      <header className="text-gray-600 body-font" >
+        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+            <Link href='/' className="mr-5 text-black hover:text-gray-900 font-bold">
+              Home
+            </Link>
+            <Link href='/about' className="mr-5 hover:text-gray-900 font-bold">About</Link>
+            <Link href='/blog' className="mr-5 hover:text-gray-900 font-bold">Blog</Link>
+            <Link href='/contact' className="mr-5 hover:text-gray-900 font-bold">Contact</Link>
+          </nav>
+        </div>
+      </header>
+      {/* head is for writing the title and decsription of the app */}
+      <Head>
+        <title>Hunting Coder</title>
+        <meta name="description" content="A blog for hunting coders" />
+        <meta
+          name="keywords"
+          content="nextjs, huntingcoder blog, hunting coder"
+        />
+      </Head>
+      <main
+        className={`flex min-h-screen flex-col items-center space-between p-10 ${inter.className}`}
+      >
+        <h1 className={`text-5xl font-semibold mb-5`}>Hunting Coders</h1>
 
-<header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-   
-    <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 text-black hover:text-gray-900 font-bold">Home</a>
-      <a class="mr-5 hover:text-gray-900 font-bold" href={"/about"}>About</a>
-      <a class="mr-5 hover:text-gray-900 font-bold" href={"/blog"}>Blog</a>
-      <a class="mr-5 hover:text-gray-900 font-bold" href={"/contact"}>Contact</a>
-    </nav>
-  
-  </div>
-</header>
-    {/* head is for writing the title and decsription of the app */}
-    <Head>
-      <title>Hunting Coder</title>
-      <meta name='description' content='A blog for hunting coders' />
-      <meta name='keywords' content='nextjs, huntingcoder blog, hunting coder' />
+        <p className=" flex w-full justify-center lg:w-auto mb-8">
+          A blog for hunting coders by a Hunting Coders
+        </p>
 
-    </Head>
-    <main
-      class={`flex min-h-screen flex-col items-center space-between p-10 ${inter.class}`}
-    >
+        <div className="blogs">
+          <h2 className="text-center text-3xl font-semibold mb-5 underline">
+            Popular Blogs
+          </h2>
 
-  <h1 class={`text-5xl font-semibold mb-5`} >
-    Hunting Coders
-  </h1>
-
-  <p class=" flex w-full justify-center lg:w-auto mb-8">
-    A blog for hunting coders by a Hunting Coders
-  </p>
-  
-  <div class="blogs">
-      <h2 className='text-center text-3xl font-semibold mb-5'>Popular Blogs</h2>
-
-    <div class="blog-items">
-      <h1 class={`text-2xl font-semibold text-center`}>How to learn Javascript in 2023</h1>
-      <p class={`text-1xl`}>Javascript is the language used to design logic for web</p>
-    </div>
-    <div class="blog-items">
-      <h1 class={`text-2xl font-semibold text-center`}>How to learn Javascript in 2023</h1>
-      <p class={`text-1xl`}>Javascript is the language used to design logic for web</p>
-    </div>
-  
-  </div>
-
-
- 
-    </main>
+          <div className={Style.blog}>
+            <h1 className={`text-2xl font-semibold text-center`}>
+              How to learn Javascript in 2023
+            </h1>
+            <p className={`text-1xl`}>
+              Javascript is the language used to design logic for web
+            </p>
+          </div>
+          <div className={Style.blog}>
+            <h1 className={`text-2xl font-semibold text-center`}>
+              How to learn Javascript in 2023
+            </h1>
+            <p className={`text-1xl`}>
+              Javascript is the language used to design logic for web
+            </p>
+          </div>
+        </div>
+      </main>
     </>
-  )
+  );
 }
