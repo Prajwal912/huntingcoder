@@ -6,18 +6,20 @@ const inter = Inter({ subsets: ["latin"] });
 import { useEffect, useState } from "react";
 
 const Blog = () => {
-const [Blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-   fetch("http://localhost:3000/api/blogs")
-   .then((a)=>{
-    return a.json(); 
-  }).then((parsed) =>{
-      console.log(parsed);
-      setBlogs(parsed)
-    })
-   },[])
-  
+    fetch("http://localhost:3000/api/blogs")
+      .then((a) => {
+        return a.json();
+      })
+      .then((parsed) => {
+        console.log(parsed.allBlogs);
+        setBlogs(parsed.allBlogs);
+      });
+  }, []);
+
+
   return (
     <>
       <main
@@ -25,17 +27,23 @@ const [Blogs, setBlogs] = useState([])
       >
         <h1 className={`text-5xl font-semibold mb-5`}>Hunting Coders</h1>
 
-        <div className="blogs">
-          <div className={Style.blog}>
-            <Link href={'/blogpost/learn-js'}>
-            <h1 className={`text-2xl font-semibold text-center`}>
-              How to learn Javascript in 2023
-            </h1>
-            </Link>
-            <p className={`text-1xl`}>
-              Javascript is the language used to design logic for web
-            </p>
-          </div>
+        <div>
+
+
+          {blogs?.map((blogItem) => {
+            return <div className={Style.blog} key={blogItem.slug}>
+                <Link href={`/blogpost/${blogItem.slug}`}>
+                  <h1 className={`text-2xl font-semibold text-center mb-4`}>
+                  {blogItem.title}
+                  </h1>
+                </Link>
+                <p className={`text-1xl px-[10rem]`}>
+                  {blogItem.content.substr(0,150)}...
+                </p>
+              </div>
+          })}
+
+
         </div>
       </main>
     </>
@@ -43,3 +51,4 @@ const [Blogs, setBlogs] = useState([])
 };
 
 export default Blog;
+ 
