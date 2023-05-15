@@ -3,8 +3,21 @@ import { Inter } from "next/font/google";
 import Style from "../styles/home.module.css";
 import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
+import { useEffect, useState } from "react";
 
 const Blog = () => {
+const [Blogs, setBlogs] = useState([])
+
+  useEffect(() => {
+   fetch("http://localhost:3000/api/blogs")
+   .then((a)=>{
+    return a.json(); 
+  }).then((parsed) =>{
+      console.log(parsed);
+      setBlogs(parsed)
+    })
+   },[])
+  
   return (
     <>
       <main
